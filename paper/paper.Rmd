@@ -30,6 +30,7 @@ biblio-style: unsrt
 output:
   bookdown::pdf_book:
     base_format: rticles::arxiv_article
+    keep_tex: false
     
 # if needed, add more definitions to the preamble
 header-includes:

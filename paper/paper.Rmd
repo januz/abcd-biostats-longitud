@@ -1,0 +1,202 @@
+---
+title: ABCD Biostats Longitudinal Paper
+authors:
+  - name: Samuel W. Hawes
+    department: Psychology; Center for Children and Families
+    affiliation: Florida International University
+    location: Miami, FL 33199
+    email: shawes@fiu.edu
+  - name: Wesley K. Thompson
+    thanks: Use footnote for providing further information about author (webpage, alternative address)---*not* for acknowledging funding agencies. Optional.
+    department: Population Neuroscience and Genetics Lab
+    affiliation: University of California, San Diego
+    location: San Diego, CA 92093
+    email: wkthompson@ucsd.edu
+abstract: |
+  This is the abstract. This is the abstract. This is the abstract.
+  This is the abstract. This is the abstract. This is the abstract. 
+  This is the abstract. This is the abstract. This is the abstract.
+  This is the abstract. This is the abstract. This is the abstract. 
+  This is the abstract. This is the abstract. This is the abstract.
+  This is the abstract. This is the abstract. This is the abstract. 
+  This is the abstract. This is the abstract. This is the abstract.
+  This is the abstract. This is the abstract. This is the abstract. 
+keywords:
+  - keyword1
+  - keyword2
+  - (optional and can be removed)
+bibliography: references.bib
+biblio-style: unsrt
+output:
+  bookdown::pdf_book:
+    base_format: rticles::arxiv_article
+    
+# if needed, add more definitions to the preamble
+header-includes:
+  - \usepackage{amsmath}
+  - \newcommand{\abcd}{Adolescent Brain Cognitive Development}
+  - \newcommand{\R}{\textsf{R}}
+---
+
+```{r setup, include=FALSE}
+options(width=20)
+knitr::opts_chunk$set(echo = TRUE, comment="")
+```
+
+# Sectioning
+
+This is a section. `r stringi::stri_rand_lipsum(1)`
+
+`r stringi::stri_rand_lipsum(1)`
+
+## Subsection
+
+This is a subsection. `r stringi::stri_rand_lipsum(1)`
+
+`r stringi::stri_rand_lipsum(1)`
+
+### Subsubsection
+
+This is a subsubsection. `r stringi::stri_rand_lipsum(1)`
+
+`r stringi::stri_rand_lipsum(1)`
+
+#### Paragraph
+
+This is a paragraph. `r stringi::stri_rand_lipsum(1)`
+
+`r stringi::stri_rand_lipsum(1)`
+
+# (Pandoc) Markdown syntax {#pandoc}
+
+## Basic formatting
+
+Text can be **bold**, *italic*, or `verbatim` (e.g., for code).
+
+\medskip\noindent This is a quotation:
+
+> *This is an infamous quote.*
+>
+> \smallskip\sffamily\footnotesize --- The Author
+
+\medskip\noindent Explicit URLs and email addresses are automatically converted to clickable links, e.g., https://abcdstudy.org and janosch@ucsd.edu. Links can also be shown with alternative text, e.g., The ABCD study's [website](https://abcdstudy.org) and Janosch's [email address](mailto:janosch@ucsd.edu).
+
+One can also use \LaTeX\ syntax directly if one has or wants to, like the `\medskip\noindent` above.
+
+## Footnotes
+
+Footnotes can be added like this.^[This is a footnote.]
+
+## Lists
+
+This is an *unordered* list:
+
+- first item
+- second item
+    + first subitem
+    + second subitem
+        + first subsubitem
+        + second subsubitem
+- third item
+
+\noindent This is an *ordered* list:
+
+1. first item
+1. second item
+1. third item
+1. fourth item
+1. fifth item
+1. sixth item
+1. seventh item
+1. eighth item
+1. ninth item
+1. tenth item
+    i. first subitem
+    i. second subitem
+    i. third subitem
+    i. fourth subitem
+    i. fifth subitem
+    i. sixth subitem
+    i. seventh subitem
+    i. eighth subitem
+    i. ninth subitem
+    i. tenth subitem
+    i. eleventh subitem
+        a. first subsubitem
+        a. second subsubitem
+        a. third subsubitem
+1. eleventh item
+
+## Citations
+
+Citations can be added using the following syntax:
+
+- `[@citation1]` / `[@citation2; @citation3]` for parenthetical citations.^[Prefixes and suffixes can be added to parenthetical citation, e.g., `[cf., @citation1]`.]
+- `@citation4` for in-text citations.
+
+This is what one paper says [see @hadash2018estimate, for an overview]. This is what two other say [@kour2014real; @kour2014fast]. @hadash2018estimate said more.
+
+## Mathematical notation
+
+Math is based on \LaTeX\ syntax.^[See, e.g., https://en.wikibooks.org/wiki/LaTeX/Mathematics or https://www.overleaf.com/learn/latex/mathematical_expressions.] To display math inline, one has to enclose mathematical expressions in `$...$`, e.g., $\sum_{n=1}^{10} n^2$. To add an equation, one can utilize \LaTeX\ equation environments:
+
+\begin{equation}
+Y_i = \beta_0 + \beta_1 X_i + \epsilon_i
+(\#eq:regression)
+\end{equation}
+
+# R Markdown syntax/elements
+
+## Code
+
+One can embed arbitrary \R\ code^[A number of other programming languages are also supported, see https://bookdown.org/yihui/rmarkdown/language-engines.html.] anywhere in the document like "the square root of 36 is `r sqrt(36)`". Furthermore, one can use "code chunks" to execute bigger chunks of \R\ code and have the results displayed in the document (or not^[For an overview of different chunk options which determine how code chunks are displayed in the resulting document, see https://yihui.org/knitr/options/.]).
+
+\footnotesize
+```{r glm-iris}
+# select variables
+y <- iris$Species
+x <- iris$Sepal.Length
+
+# print regression model
+glm(y~x, family = 'binomial')
+```
+\normalsize
+
+## Figures
+
+Code chunks can also be used to embed plots generated with \R\ (or other programming languages). The appearance of figures in the output document can be modified using chunk options.^[See, e.g., http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents.] For example, the following prints a figure that takes up 75% of the column width. It's set in a floating environment, so might not appear at this exact location.
+
+```{r fig-75percent, fig.align = 'center', out.width = "75%", fig.cap = "A figure.", echo=FALSE}
+plot(runif(10))
+```
+
+\medskip\noindent While it possible to use standard Markdown syntax to include locally stored images, it's suggested to also use code chunks for these images. This makes it easy to format an image's appearence, add figure captions, and reference figures throughout the document (see below). The following figure is using a local image.
+
+## Cross-references
+
+Using the Bookdown extension of \R\ Markdown, it is possible to embed cross-references to different elements of the document.^[See https://bookdown.org/yihui/bookdown/cross-references.html.]
+
+- `\@ref(section-id)` to reference sections, e.g., see Section \@ref(pandoc).
+- `\@ref(fig:plot-name)` to reference figures, e.g., see Figure \@ref(fig:fig-75percent).
+- `\@ref(eq:equation-name)` to reference equations, e.g., see Equation \@ref(eq:regression).
+
+# Random tips and tricks
+
+- To make on-the-fly changes to the layout
+  - use `header_includes` in the YAML header to add code to the \LaTeX\ preamble or
+  - put a modified class file in the same directory as the `.Rmd` file.
+- To eliminate "overfull lines/boxes"
+  - modify \LaTeX's `\emergenystretch` parameter by including, e.g., `\setlength{\emergencystretch}{8em}` in the `.Rmd` file before the first overful box.
+- To have URLs in figure captions be displayed with colored links
+  - use `\\url{}` around the URL.
+
+# Summary
+
+This document gave a brief introduction on how to use R Markdown to generate reports in PDF format. For more thorough information on how to use \R\ Markdown, see the following web resources:
+
+- [\R\ Markdown guide](https://bookdown.org/yihui/rmarkdown/)
+- [\R\ Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- [\R\ Markdown for scientists](https://rmd4sci.njtierney.com/)
+- [Bookdown book](https://bookdown.org/yihui/bookdown/)
+
+# References

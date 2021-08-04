@@ -36,10 +36,10 @@
 
 ## Directory structure
 
--   [:file\\\_folder: R/](/R/) contains all the R code (currently only
-    one file containing `trackdown` commands).
--   [:file\\\_folder: paper/](/paper/) contains the R Markdown and
+-   [:file\_folder: R/](/R/) contains all the R code (currently only one
+    file containing `trackdown` commands).
+-   [:file\_folder: paper/](/paper/) contains the R Markdown and
     supplementary files to render the paper (currently just a template
     file)
--   [:file\\\_folder: examples/](/examples/) contains all the R Markdown
+-   [:file\_folder: examples/](/examples/) contains all the R Markdown
     files for the examples described in the paper (currently empty)
